@@ -9,6 +9,8 @@ here https://tabatkins.github.io/specs/css-shadow-parts/.
 ### Known Issues
 * Works only for custom-elements that implement the `PartThemeMixin`.
 * ::part/::theme selectors in main document styles are not applied.
+* styling for dom that modifies `part` attributes after connectedCallback
+requires use of the custom api `_applyPartTheme()`.
 
 ### Performance
 
@@ -23,8 +25,9 @@ A new style element is added with rules that match these attributes
 corresponding to part properties provided as css custom properties from the
 element ancestor.
 
-NOTE: Any time dom is added to the element containin new part attributes,
-`_applyPartTheme` must be called. This is done automatically when the element is connected.
+NOTE: Any time dom is modified in the element containing part attributes,
+`_applyPartTheme` must be called. This is done automatically only when the
+element is connected.
 
 ### Future optimization
 1. Support for ::theme requires traversing the entire ancestor tree. Dropping support for ::theme would remove this requirement and then ancestor traversal would only be required for forwarding (foo => forwarded-foo).
