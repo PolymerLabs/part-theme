@@ -11,6 +11,7 @@ here https://tabatkins.github.io/specs/css-shadow-parts/.
 * ::part/::theme selectors in main document styles are not applied.
 * styling for dom that modifies `part` attributes after connectedCallback
 requires use of the custom api `_applyPartTheme()`.
+* Usable only with native Shadow DOM. Does not work with ShadyCSS polyfill.
 
 ### Performance
 
